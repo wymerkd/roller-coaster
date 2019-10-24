@@ -1,13 +1,19 @@
 $(document).ready(function() {
-  var age = parseInt(prompt("Enter your age"));
+  $("#form").submit(function(event){
+    event.preventDefault();
 
-  if (age <5) {
+  var age = parseInt($("input#inputAge").val());
+  $("#death, #goldielocks, #baby").hide();
+  console.log(age);
+
+  if (age > 0 && age < 5) {
     $("#baby").show();
-  } else if (age <18) {
+  } else if (age > 5 && age <18) {
     $("#goldielocks").show();
-  } else if (age=>18) {
-    $("#death").show();
-    $("#goldielocks").show();
+  } else if (age => 18) {
+    $("#death, #goldielocks").show();
+  } else {
+    alert($("Please enter a number."));
   }
-
+  });
 });
